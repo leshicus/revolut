@@ -4,8 +4,7 @@ import axios from 'axios'
 import fx from 'money'
 
 function loadFx(resolve, reject) {
-    axios.get('http://api.fixer.io/latest', {
-    })
+    axios.get('http://api.fixer.io/latest', {})
         .then(function (response) {
             console.log(response);
             if (response) {
@@ -50,13 +49,31 @@ class ExchangeContainer extends Component {
     constructor(props) {
         super(props)
 
+        this.getRate = this.getRate.bind(this)
+
         startFx(props.dispatch);
+    }
+
+
+    getRate(fx, first, second) {
+        const {rates} = fx
+        console.info(rates)
+
+        if (rates) {
+            return(
+                <div>
+                    {first}/{second} = {rates[first]}/{rates[second]} = {rates[first]/rates[second]}
+                </div>
+            )
+
+        }
+
     }
 
     render() {
         return (
             <div>
-                123
+                {this.getRate(this.props.fx, 'RUB', 'USD')}
             </div>
         )
     }

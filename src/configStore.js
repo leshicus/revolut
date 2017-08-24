@@ -3,7 +3,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import reducer from './reducers'
 
 const configStore = ()=> {
-    const initialState = {}
+    const initialState = {
+        fx: {}
+    }
 
     const store = createStore(
         reducer,
