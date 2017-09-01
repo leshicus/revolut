@@ -1,9 +1,28 @@
-const reducer = (state = {
-}, action) => {
+const reducer = (state = {}, action) => {
     switch (action.type) {
         case 'FX_FETCHED':
             return Object.assign({}, state, {
-                fx    : action.fx
+                fx: action.fx
+            })
+        case 'SAVE_CURRENCIES':
+            return Object.assign({}, state, {
+                currencies: action.currencies
+            })
+        case 'CHANGE_CURRENCY_TO':
+            return Object.assign({}, state, {
+                currencyNameTo: action.currencyName
+            })
+        case 'CHANGE_CURRENCY_FROM':
+            return Object.assign({}, state, {
+                currencyNameFrom: action.currencyName
+            })
+        case 'CONVERT':
+            return Object.assign({}, state, {
+                purse: action.purse
+            })
+        case 'START_LOAD_TIMER':
+            return Object.assign({}, state, {
+                intervalLoadFx: action.intervalLoadFx
             })
         default:
             return state

@@ -4,7 +4,15 @@ import reducer from './reducers'
 
 const configStore = ()=> {
     const initialState = {
-        fx: {}
+        fx              : {},
+        purse           : {
+            'GBP': 58.33,
+            'USD': 25.51,
+            'EUR': 116.12,
+        },
+        currencyNameFrom: 'GBP',
+        currencyNameTo  : 'USD',
+        currencies:[]
     }
 
     const store = createStore(
