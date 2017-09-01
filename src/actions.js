@@ -3,7 +3,7 @@ import getSymbolFromCurrency from 'currency-symbol-map'
 import {RIGHT, LEFT, SIMULATE_RATE_CHANGE} from './constants'
 
 export function loadFx(resolve, reject) {
-    axios.get('http://api.fixer.io/latest', {})
+    axios.get('https://api.fixer.io/latest', {})
         .then(function (response) {
             if (response) {
                 const data = response.data;
