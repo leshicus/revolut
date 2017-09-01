@@ -12,14 +12,23 @@ const configStore = ()=> {
         },
         currencyNameFrom: 'GBP',
         currencyNameTo  : 'USD',
-        currencies:[]
+        currencies      : []
     }
 
-    const store = createStore(
-        reducer,
-        initialState,
-        composeWithDevTools()
-    )
+    let store
+    if (process.env.NODE_ENV !== 'production') {
+        store = createStore(
+            reducer,
+            initialState,
+            composeWithDevTools()
+        )
+    } else {
+        store = createStore(
+            reducer,
+            initialState
+        )
+    }
+
     return store
 }
 
