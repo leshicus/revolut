@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
+// * View
 import ExchangeFrom from './ExchangeFrom'
 import ExchangeTo from './ExchangeTo'
 import TopBottons from './TopBottons'
+
 import {startFx} from './actions'
 import loading from './loading.gif'
 
@@ -35,7 +37,7 @@ const styles = {
 class ExchangeContainer extends Component {
     constructor(props) {
         super(props)
-
+console.info(props.params);
         this.state = {
             sumToConvert       : 0,
             validationErrorFrom: false,
@@ -55,14 +57,6 @@ class ExchangeContainer extends Component {
     componentWillMount() {
         startFx(this.props.dispatch, this.props.intervalLoadFx)
     }
-
-    // shouldComponentUpdate= ()=>{
-    //     console.info(this.props.fx, Object.keys(this.props.fx).length );
-    //     if(Object.keys(this.props.fx).length === 0)
-    //         return false
-    //     else
-    //         return true
-    // }
 
     getRate = (first, second, amount, accuracy)=> {
         const {rates, base} = this.props.fx

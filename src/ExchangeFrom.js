@@ -40,7 +40,9 @@ const onInputBlur   = (event)=> {
 
     input.focus()
 }
+
 const getSumInPurse = (currencyName, sumInPurse)=>'You have ' + getSymbolFromCurrency(currencyName) + '' + sumInPurse
+
 const ExchangeFrom  = ({dispatch, currencyNameFrom, sumInPurse, isError, onChangeAmountFrom, currencies, sumToConvert})=> {
     return (
         <Swipeable

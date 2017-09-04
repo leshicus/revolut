@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {getRateText} from './actions'
 import {FONTSIZE_SUB, FONTSIZE_MINOR} from './constants'
 

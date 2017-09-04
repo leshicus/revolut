@@ -36,7 +36,9 @@ const styles = {
 }
 
 const getSumInPurse = (currencyName, sumInPurse)=>'You have ' + getSymbolFromCurrency(currencyName) + '' + getSum(sumInPurse)
+
 const getSum        = (sumInPurse)=>sumInPurse > 0 ? sumInPurse : 0
+
 const ExchangeTo    = ({dispatch, currencyNameTo, currencyNameFrom, rate, sumInPurse, isError, sumToConvert, currencies})=> {
     return (
         <Swipeable
