@@ -28,7 +28,8 @@ const simulateRateChange = (dispatch, fx)=> {
         if (SIMULATE_RATE_CHANGE) {
             let rates = fx.rates
             Object.keys(rates).map(function (key, index) {
-                rates[key] = (rates[key] * getRandomArbitrary(1, 1.09)).toFixed(4, 10);
+                rates[key] = (rates[key] * getRandomArbitrary(1, 1.09)).toFixed(4, 10)
+                return rates
             });
         }
 

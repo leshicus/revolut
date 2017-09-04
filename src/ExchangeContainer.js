@@ -5,15 +5,16 @@ import ExchangeFrom from './ExchangeFrom'
 import ExchangeTo from './ExchangeTo'
 import TopBottons from './TopBottons'
 import {startFx} from './actions'
+import loading from './loading.gif'
 
 const styles = {
-    container: {
+    container       : {
         width          : '100%',
         fontSize       : '18px',
         backgroundColor: 'rgb(43, 158, 255)',
         color          : 'white',
     },
-    button   : {
+    button          : {
         padding        : '10px',
         width          : '100%',
         fontSize       : 'inherit',
@@ -21,6 +22,13 @@ const styles = {
         color          : 'white',
         border         : '0',
         cursor         : 'pointer'
+    },
+    containerLoading: {
+        display      : 'flex',
+        flexDirection: 'column'
+    },
+    loadingText     : {
+        textAlign: 'center'
     }
 }
 
@@ -41,8 +49,20 @@ class ExchangeContainer extends Component {
         this.onClickExchange      = this.onClickExchange.bind(this)
         this.onClickCancel        = this.onClickCancel.bind(this)
 
-        startFx(props.dispatch, props.intervalLoadFx)
+
     }
+
+    componentWillMount() {
+        startFx(this.props.dispatch, this.props.intervalLoadFx)
+    }
+
+    // shouldComponentUpdate= ()=>{
+    //     console.info(this.props.fx, Object.keys(this.props.fx).length );
+    //     if(Object.keys(this.props.fx).length === 0)
+    //         return false
+    //     else
+    //         return true
+    // }
 
     getRate = (first, second, amount, accuracy)=> {
         const {rates, base} = this.props.fx
@@ -161,6 +181,15 @@ class ExchangeContainer extends Component {
     }
 
     render() {
+        if (Object.keys(this.props.fx).length === 0) {
+            return (
+                <div style={styles.containerLoading}>
+                    <img id="loading-image" src={loading} alt="Loading..."/>
+                    <span style={styles.loadingText}>Loading FX...</span>
+                </div>
+            )
+        }
+
         return (
             <div style={styles.container}>
                 <TopBottons {...this.state} {...this.props}
