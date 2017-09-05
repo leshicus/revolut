@@ -24,6 +24,14 @@ const reducer = (state = {}, action) => {
             return Object.assign({}, state, {
                 intervalLoadFx: action.intervalLoadFx
             })
+        case 'VALIDATION_ERROR':
+            return Object.assign({}, state, {
+                validationError: action.validationError
+            })
+        case 'CHANGE_SUM':
+            return Object.assign({}, state, {
+                sumToConvert: action.sumToConvert
+            })
         default:
             return state
     }

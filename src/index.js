@@ -4,7 +4,7 @@ import './index.css';
 import {Provider} from 'react-redux'
 
 import configStore from './configStore'
-import ExchangeContainer from './ExchangeContainer'
+import ExchangeContainer from './components/ExchangeContainer'
 
 const store = configStore()
 

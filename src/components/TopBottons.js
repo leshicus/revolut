@@ -1,6 +1,6 @@
 import React from 'react'
-import {getRateText} from './actions'
-import {FONTSIZE_SUB, FONTSIZE_MINOR} from './constants'
+import {getRateText} from './../actions'
+import {FONTSIZE_SUB, FONTSIZE_MINOR} from './../constants'
 
 const styles = {
     container     : {
@@ -45,7 +45,7 @@ const getMinorDecimal = (sum)=> {
     return '' + Math.abs(minor.toFixed(0, 10))
 }
 
-const TopBottons = ({currencyNameFrom, currencyNameTo, rate, disabled, onClickExchange, onClickCancel})=> {
+const TopBottons = ({currencyNameFrom, currencyNameTo, rate, buttonExchangeDisabled, onClickExchange, onClickCancel})=> {
     return (
         <div style={styles.container}>
             <button style={styles.buttonCancel}
@@ -59,7 +59,7 @@ const TopBottons = ({currencyNameFrom, currencyNameTo, rate, disabled, onClickEx
             </div>
             <button style={styles.buttonExchange}
                     onClick={onClickExchange}
-                    disabled={disabled}
+                    disabled={buttonExchangeDisabled}
             >
                 Exchange
             </button>

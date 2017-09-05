@@ -1,6 +1,6 @@
 import axios from 'axios'
 import getSymbolFromCurrency from 'currency-symbol-map'
-import {RIGHT, LEFT, SIMULATE_RATE_CHANGE} from './constants'
+import {RIGHT, LEFT, SIMULATE_RATE_CHANGE} from './../constants'
 
 export function loadFx(resolve, reject) {
     axios.get('https://api.fixer.io/latest', {})
@@ -15,13 +15,13 @@ export function loadFx(resolve, reject) {
         .catch(function (error) {
             console.log(error);
         });
-
 }
 
 // * random in inetval fom min to max
 const getRandomArbitrary = (min, max) => {
     return Math.random() * (max - min) + min;
 }
+
 // * simulate that currency rate is changing
 const simulateRateChange = (dispatch, fx)=> {
     if (fx && fx.rates) {
@@ -83,7 +83,7 @@ const fillArrayOfCurrencies = (dispatch, fx)=> {
     }
 }
 
-export const onSwiped = (dispatch, currencies, currencyName, direction, typeName)=> {
+export const onSwiped = (dispatch, currencies, currencyName, direction, typeName, props)=> {
     let change             = direction === RIGHT ? RIGHT : LEFT;
     const currencyIndexNow = currencies.findIndex((item)=> item === currencyName)
     let currencyIndexNext  = currencyIndexNow + parseInt(change, 10)
@@ -95,8 +95,54 @@ export const onSwiped = (dispatch, currencies, currencyName, direction, typeName
     }
 
     dispatch({
+        type        : 'CHANGE_SUM',
+        sumToConvert: ''
+    })
+
+    dispatch({
+        type           : 'VALIDATION_ERROR',
+        validationError: false
+    })
+
+    dispatch({
         type        : typeName,
         currencyName: currencies[currencyIndexNext]
+    })
+
+    // validateEnoughFunds(props)
+}
+
+// export const validateEnoughFunds= (props)=>{
+//     const sumToConvert   = props.sumToConvert
+//     const {purse} = props
+//     const sumInPurseFrom = purse[props.currencyNameFrom]
+//     const convertedSum   = getRate(props.fx, props.currencyNameFrom, props.currencyNameTo, sumToConvert, 2)
+//
+//     if (sumInPurseFrom < sumToConvert) {
+//         dispatchValidationError(props.dispatch, true)
+//     } else {
+//         dispatchValidationError(props.dispatch, false)
+//     }
+// }
+
+export const dispatchValidationError = (dispatch, error)=> {
+    dispatch({
+        type           : 'VALIDATION_ERROR',
+        validationError: error
+    })
+}
+
+export const dispatchSum = (dispatch, sum)=> {
+    dispatch({
+        type        : 'CHANGE_SUM',
+        sumToConvert: sum
+    })
+}
+
+export const dispatchConvert = (dispatch, purse)=> {
+    dispatch({
+        type: 'CONVERT',
+        purse
     })
 }
 

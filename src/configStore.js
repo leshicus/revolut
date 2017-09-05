@@ -12,7 +12,9 @@ const configStore = ()=> {
         },
         currencyNameFrom: 'GBP',
         currencyNameTo  : 'USD',
-        currencies      : []
+        currencies      : [],
+        validationError : false,
+        sumToConvert    : ''
     }
 
     let store

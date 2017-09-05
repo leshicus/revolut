@@ -19,3 +19,8 @@ button[disabled] {
     opacity: 0.7;
     cursor: not-allowed !important;
 }
+
+button[type=arrow]:hover{
+    color: #2e2e2e!important;
+    cursor: pointer;
+}
