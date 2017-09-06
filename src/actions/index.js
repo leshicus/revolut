@@ -83,7 +83,7 @@ const fillArrayOfCurrencies = (dispatch, fx)=> {
     }
 }
 
-export const onSwiped = (dispatch, currencies, currencyName, direction, typeName, props)=> {
+export const getCurrencyNext = (currencies, currencyName, direction)=> {
     let change             = direction === RIGHT ? RIGHT : LEFT;
     const currencyIndexNow = currencies.findIndex((item)=> item === currencyName)
     let currencyIndexNext  = currencyIndexNow + parseInt(change, 10)
@@ -93,6 +93,12 @@ export const onSwiped = (dispatch, currencies, currencyName, direction, typeName
     } else if (currencyIndexNext > currencies.length - 1) {
         currencyIndexNext = 0
     }
+
+    return currencies[currencyIndexNext]
+}
+
+export const onSwiped = (dispatch, currencies, currencyName, direction, typeName)=> {
+    const currencyNext = getCurrencyNext(currencies, currencyName, direction)
 
     dispatch({
         type        : 'CHANGE_SUM',
@@ -106,10 +112,8 @@ export const onSwiped = (dispatch, currencies, currencyName, direction, typeName
 
     dispatch({
         type        : typeName,
-        currencyName: currencies[currencyIndexNext]
+        currencyName: currencyNext
     })
-
-    // validateEnoughFunds(props)
 }
 
 // export const validateEnoughFunds= (props)=>{
@@ -153,3 +157,29 @@ export const getErrorText = (isError)=> {
 }
 
 export const getRateText = (currencyNameTo, currencyNameFrom, rate)=>getSymbolFromCurrency(currencyNameTo) + '1 = ' + getSymbolFromCurrency(currencyNameFrom) + rate.toFixed(2, 10)
+
+export const getRate = (fx, first, second, amount, accuracy)=> {
+    const {rates, base} = fx
+
+    if (rates) {
+        let val = 0
+
+        if (second === base) {
+            val = 1 / rates[first] * amount
+        } else if (first === base) {
+            val = rates[second] * amount
+        } else {
+            val = rates[second] / rates[first] * amount
+        }
+
+        return +val.toFixed(accuracy)
+    } else
+        return 0
+}
+
+export const decrementFrom= (purse, currencyNameFrom, sumToConvert)=>{
+    let valFrom        = purse[currencyNameFrom]
+    valFrom = valFrom - sumToConvert
+
+    return valFrom
+}

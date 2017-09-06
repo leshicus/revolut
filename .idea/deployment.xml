@@ -121,6 +121,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="websocket-service">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="windbet">
         <serverdata>
           <mappings>

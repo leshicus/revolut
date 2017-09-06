@@ -1,7 +1,7 @@
 import React from 'react'
 import Swipeable from 'react-swipeable'
 import getSymbolFromCurrency from 'currency-symbol-map'
-import {onSwiped, getErrorText, getRateText} from './../actions'
+import {onSwiped, getRateText} from './../actions'
 import {RIGHT, LEFT, FONTSIZE_MAIN, FONTSIZE_SUB} from './../constants'
 
 const styles = {
@@ -19,7 +19,7 @@ const styles = {
     sumInPurse  : {
         fontSize: FONTSIZE_SUB,
         opacity : '0.7',
-        padding : '5px 25px'
+        margin  : '5px 25px'
     },
     rate        : {
         float  : 'right',
@@ -29,7 +29,7 @@ const styles = {
         display       : 'flex',
         justifyContent: 'space-between',
         fontSize      : FONTSIZE_MAIN,
-        padding       : '0 10px 0 25px'
+        margin        : '0 10px 0 25px'
     },
     buttonLeft  : {
         // float     : 'left',
@@ -62,18 +62,18 @@ const getSum = (sumInPurse)=>sumInPurse > 0 ? sumInPurse : 0
 const ExchangeTo = ({dispatch, currencyNameTo, currencyNameFrom, rate, sumInPurse, sumToConvert, currencies})=> {
     return (
         <Swipeable
-            onSwipedLeft={()=>onSwiped(dispatch, currencies, currencyNameTo,LEFT, 'CHANGE_CURRENCY_TO')}
-            onSwipedRight={()=>onSwiped(dispatch, currencies, currencyNameTo,RIGHT,'CHANGE_CURRENCY_TO')}
+            onSwipedLeft={()=>onSwiped(dispatch, currencies, currencyNameTo, LEFT, 'CHANGE_CURRENCY_TO')}
+            onSwipedRight={()=>onSwiped(dispatch, currencies, currencyNameTo, RIGHT,'CHANGE_CURRENCY_TO')}
         >
             <button style={styles.buttonLeft}
                     type="arrow"
                     onClick={()=>onSwiped(dispatch, currencies, currencyNameTo, LEFT, 'CHANGE_CURRENCY_TO')}
-            > ⇦
+            >⇦
             </button>
             <button style={styles.buttonRight}
                     type="arrow"
                     onClick={()=>onSwiped(dispatch, currencies, currencyNameTo,RIGHT,'CHANGE_CURRENCY_TO')}
-            > ⇨
+            >⇨
             </button>
             <div style={styles.container}>
                 <div style={styles.firstRow}>

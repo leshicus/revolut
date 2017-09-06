@@ -11,6 +11,7 @@ import {
     dispatchValidationError,
     dispatchSum,
     dispatchConvert,
+    getRate
 } from './../actions'
 import loading from './../assets/loading.gif'
 
@@ -41,27 +42,6 @@ const styles = {
 
 const getCurrenciesInPurse = (purse)=> {
     return Object.getOwnPropertyNames(purse)
-}
-
-const getRate = (fx, first, second, amount, accuracy)=> {
-    const {rates, base} = fx
-
-    if (rates) {
-        let val = 0
-
-        if (second === base) {
-            val = 1 / rates[first] * amount
-        } else if (first === base) {
-            val = rates[second] * amount
-        } else {
-            val = rates[second] / rates[first] * amount
-        }
-
-        // val = -val;
-
-        return +val.toFixed(accuracy)
-    } else
-        return 0
 }
 
 const isNumber = (n)=> {
@@ -107,18 +87,17 @@ class ExchangeContainer extends Component {
         let sumToConvert     = event.currentTarget.value
         const {purse} = this.props
         const sumInPurseFrom = purse[currencyNameFrom]
-        const convertedSum   = getRate(this.props.fx, currencyNameFrom, currencyNameTo, sumToConvert, 2)
-
+        
+// console.info(sumToConvert);
         if (sumToConvert === '+'
             || sumToConvert === '+.'
             || sumToConvert === '-'
             || sumToConvert === '-.'
             || sumToConvert === '.'
         ) {
-            sumToConvert = '0'
+            sumToConvert = ''
         }
 
-        // console.info(sumToConvert);
         sumToConvert = sumToConvert
             .replace(/-/g, '')
             .replace('+', '')
@@ -126,7 +105,7 @@ class ExchangeContainer extends Component {
             .replace('E', '')
             .replace(/^0+(?=\d)/, '')
 
-        sumToConvert = sumToConvert || '0'
+        sumToConvert = sumToConvert || ''
 
         const error = isError(sumToConvert)
         if (!error) {
@@ -143,7 +122,7 @@ class ExchangeContainer extends Component {
     }
 
     onClickCancel = ()=> {
-        dispatchSum(this.props.dispatch, 0)
+        dispatchSum(this.props.dispatch, '')
         dispatchValidationError(this.props.dispatch, false)
     }
 
@@ -172,7 +151,7 @@ class ExchangeContainer extends Component {
         purse[this.props.currencyNameFrom] = +valFrom.toFixed(2)
         purse[this.props.currencyNameTo]   = +valTo.toFixed(2)
 
-        dispatchSum(this.props.dispatch, 0)
+        dispatchSum(this.props.dispatch, '')
         dispatchConvert(this.props.dispatch, purse)
     }
 
