@@ -71,12 +71,12 @@ const isButtonExchangeDisabled = (props)=> {
     return props.validationError || props.sumToConvert == 0 || props.currencyNameFrom === props.currencyNameTo
 }
 
-const getErrorType= (props)=>{
-    if(props.validationError === true)
+const getErrorType = (props)=> {
+    if (props.validationError === true)
         return 1
-    if(props.convertationError === true)
+    if (props.convertationError === true)
         return 2
-    
+
     return 0
 }
 
@@ -84,9 +84,9 @@ class ExchangeContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.onChangeAmountFrom       = this.onChangeAmountFrom.bind(this)
-        this.onClickExchange          = this.onClickExchange.bind(this)
-        this.onClickCancel            = this.onClickCancel.bind(this)
+        this.onChangeAmountFrom = this.onChangeAmountFrom.bind(this)
+        this.onClickExchange    = this.onClickExchange.bind(this)
+        this.onClickCancel      = this.onClickCancel.bind(this)
     }
 
     componentWillMount() {
@@ -99,7 +99,7 @@ class ExchangeContainer extends Component {
         let sumToConvert     = event.currentTarget.value
         const {purse} = this.props
         const sumInPurseFrom = purse[currencyNameFrom]
-        
+
 // console.info(sumToConvert);
         if (sumToConvert === '+'
             || sumToConvert === '+.'
@@ -140,38 +140,18 @@ class ExchangeContainer extends Component {
     }
 
     onClickExchange = ()=> {
-        const convertedSum = getRate(this.props.fx, this.props.currencyNameFrom, this.props.currencyNameTo, this.props.sumToConvert, 2)
-        // let purse          = this.props.purse
-        // let valTo          = this.props.purse[this.props.currencyNameTo]
-        // let valFrom        = this.props.purse[this.props.currencyNameFrom]
-
-        // if (valFrom <= 0
-        //     || valFrom === undefined
-        //     || !this.props.sumToConvert
-        //     || this.props.currencyNameTo === this.props.currencyNameFrom
-        // ) {
-        //     return false;
-        // }
-        //
-        // if (valTo === undefined) {
-        //     valTo = convertedSum
-        // } else {
-        //     valTo = valTo + convertedSum
-        // }
-        //
-        // valFrom = valFrom - this.props.sumToConvert
-        
+        const convertedSum        = getRate(this.props.fx, this.props.currencyNameFrom, this.props.currencyNameTo, this.props.sumToConvert, 2)
         const resultDecrementFrom = decrementSumInPurseFrom(this.props.purse, this.props.currencyNameFrom, this.props.sumToConvert)
-        const resultIncrementTo = incrementSumInPurseTo(this.props.purse, this.props.currencyNameTo, convertedSum)
-        
-        if(resultDecrementFrom.result && resultIncrementTo.result){
+        const resultIncrementTo   = incrementSumInPurseTo(this.props.purse, this.props.currencyNameTo, convertedSum)
+
+        if (resultDecrementFrom.result && resultIncrementTo.result) {
             this.props.purse[this.props.currencyNameFrom] = resultDecrementFrom.sum
             this.props.purse[this.props.currencyNameTo]   = resultIncrementTo.sum
 
             dispatchSum(this.props.dispatch, '')
             dispatchConvert(this.props.dispatch, this.props.purse)
             dispatchConvertationError(this.props.dispatch, false)
-        }else{
+        } else {
             dispatchConvertationError(this.props.dispatch, true)
         }
     }

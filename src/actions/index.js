@@ -223,3 +223,16 @@ export const incrementSumInPurseTo = (purse, currencyNameTo, convertedSum)=> {
         result: result
     }
 }
+
+// возвращает 3-й и 4-й знаки после запятой
+export const getMinorDecimal = (sum)=> {
+    // const decimal = sum % 0.01
+    // const minor   = decimal * 10000
+    //
+    // return minor.toFixed(0, 10)
+    const decimal = Math.abs(sum) - Math.floor(sum) // 123.12999 -> 0.12999
+    const strDecimal = decimal + ''
+    const minorPart = strDecimal.substring(4,6) 
+
+    return minorPart
+}

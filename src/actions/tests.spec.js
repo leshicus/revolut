@@ -1,7 +1,9 @@
-// import {test, expect} from 'jest'
 import {
     getCurrencyNext,
-    getRate
+    getRate,
+    getMinorDecimal,
+    decrementSumInPurseFrom,
+    incrementSumInPurseTo
 } from '../actions/index'
 import {RIGHT, LEFT} from './../constants/index'
 
@@ -65,4 +67,30 @@ test('Swipe right from first in the beginning (AUD->ZAR)', () => {
     expect(getCurrencyNext(store.currencies, 'AUD', RIGHT)).toBe('ZAR');
 });
 
-//todo сделать тесты на decrementSumInPurseFrom и incrementSumInPurseTo
+// * уменьшение суммы From при конвертации
+test('decrement sum in purse From', () => {
+    const purse = {
+        USD: 25.51
+    }
+    expect(decrementSumInPurseFrom(purse, 'USD', 10)).toMatchObject({"result": true, "sum": 15.51});
+    expect(decrementSumInPurseFrom(purse, 'USD', 35)).toMatchObject({"result": false, "sum": 25.51});
+    expect(decrementSumInPurseFrom(purse, 'USD', 0)).toMatchObject({"result": false, "sum": 25.51});
+});
+
+// * увеличение суммы To при конвертации
+test('increment sum in purse To', () => {
+    const purse = {
+        USD: 25.51
+    }
+    expect(incrementSumInPurseTo(purse, 'USD', 10)).toMatchObject({"result": true, "sum": 35.51});
+    expect(incrementSumInPurseTo(purse, 'USD', 0)).toMatchObject({"result": false, "sum": 25.51});
+});
+
+test('getMinorDecimal: get deciaml part of rate', () => {
+    expect(getMinorDecimal(123.45678)).toBe("67");
+    expect(getMinorDecimal("123.45679")).toBe("67");
+    expect(getMinorDecimal(123.127898)).toBe("78");
+    expect(getMinorDecimal(123.12999)).toBe("99");
+    expect(getMinorDecimal(1234.00999)).toBe("99");
+});
+

@@ -1,5 +1,8 @@
 import React from 'react'
-import {getRateText} from './../actions'
+import {
+    getRateText,
+    getMinorDecimal
+} from './../actions'
 import {FONTSIZE_SUB, FONTSIZE_MINOR} from './../constants'
 
 const styles = {
@@ -33,13 +36,6 @@ const styles = {
     minorDecimal  : {
         fontSize: FONTSIZE_MINOR,
     }
-}
-
-// возвращает 3-й и 4-й знаки после запятой
-const getMinorDecimal = (sum)=> {
-    const decimal = sum % 0.01
-    const minor   = decimal * 10000
-    return minor.toFixed(0, 10)
 }
 
 const TopBottons = ({currencyNameFrom, currencyNameTo, rate, buttonExchangeDisabled, onClickExchange, onClickCancel})=> {
