@@ -65,3 +65,4 @@ test('Swipe right from first in the beginning (AUD->ZAR)', () => {
     expect(getCurrencyNext(store.currencies, 'AUD', RIGHT)).toBe('ZAR');
 });
 
+//todo сделать тесты на decrementSumInPurseFrom и incrementSumInPurseTo

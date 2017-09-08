@@ -4,17 +4,18 @@ import reducer from './reducers'
 
 const configStore = ()=> {
     const initialState = {
-        fx              : {},
-        purse           : {
+        fx               : {},
+        purse            : {
             'GBP': 58.33,
             'USD': 25.51,
             'EUR': 116.12,
         },
-        currencyNameFrom: 'GBP',
-        currencyNameTo  : 'USD',
-        currencies      : [],
-        validationError : false,
-        sumToConvert    : ''
+        currencyNameFrom : 'GBP',
+        currencyNameTo   : 'USD',
+        currencies       : [],
+        validationError  : false,
+        convertationError: false,
+        sumToConvert     : ''
     }
 
     let store

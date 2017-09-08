@@ -9,9 +9,12 @@ import TopBottons from './TopBottons'
 import {
     startFx,
     dispatchValidationError,
+    dispatchConvertationError,
     dispatchSum,
     dispatchConvert,
-    getRate
+    getRate,
+    decrementSumInPurseFrom,
+    incrementSumInPurseTo
 } from './../actions'
 import loading from './../assets/loading.gif'
 
@@ -66,6 +69,15 @@ const isError = (value)=> {
 
 const isButtonExchangeDisabled = (props)=> {
     return props.validationError || props.sumToConvert == 0 || props.currencyNameFrom === props.currencyNameTo
+}
+
+const getErrorType= (props)=>{
+    if(props.validationError === true)
+        return 1
+    if(props.convertationError === true)
+        return 2
+    
+    return 0
 }
 
 class ExchangeContainer extends Component {
@@ -124,35 +136,44 @@ class ExchangeContainer extends Component {
     onClickCancel = ()=> {
         dispatchSum(this.props.dispatch, '')
         dispatchValidationError(this.props.dispatch, false)
+        dispatchConvertationError(this.props.dispatch, false)
     }
 
     onClickExchange = ()=> {
         const convertedSum = getRate(this.props.fx, this.props.currencyNameFrom, this.props.currencyNameTo, this.props.sumToConvert, 2)
-        let purse          = this.props.purse
-        let valTo          = this.props.purse[this.props.currencyNameTo]
-        let valFrom        = this.props.purse[this.props.currencyNameFrom]
+        // let purse          = this.props.purse
+        // let valTo          = this.props.purse[this.props.currencyNameTo]
+        // let valFrom        = this.props.purse[this.props.currencyNameFrom]
 
-        if (valFrom <= 0
-            || valFrom === undefined
-            || !this.props.sumToConvert
-            || this.props.currencyNameTo === this.props.currencyNameFrom
-        ) {
-            return false;
+        // if (valFrom <= 0
+        //     || valFrom === undefined
+        //     || !this.props.sumToConvert
+        //     || this.props.currencyNameTo === this.props.currencyNameFrom
+        // ) {
+        //     return false;
+        // }
+        //
+        // if (valTo === undefined) {
+        //     valTo = convertedSum
+        // } else {
+        //     valTo = valTo + convertedSum
+        // }
+        //
+        // valFrom = valFrom - this.props.sumToConvert
+        
+        const resultDecrementFrom = decrementSumInPurseFrom(this.props.purse, this.props.currencyNameFrom, this.props.sumToConvert)
+        const resultIncrementTo = incrementSumInPurseTo(this.props.purse, this.props.currencyNameTo, convertedSum)
+        
+        if(resultDecrementFrom.result && resultIncrementTo.result){
+            this.props.purse[this.props.currencyNameFrom] = resultDecrementFrom.sum
+            this.props.purse[this.props.currencyNameTo]   = resultIncrementTo.sum
+
+            dispatchSum(this.props.dispatch, '')
+            dispatchConvert(this.props.dispatch, this.props.purse)
+            dispatchConvertationError(this.props.dispatch, false)
+        }else{
+            dispatchConvertationError(this.props.dispatch, true)
         }
-
-        if (valTo === undefined) {
-            valTo = convertedSum
-        } else {
-            valTo = valTo + convertedSum
-        }
-
-        valFrom = valFrom - this.props.sumToConvert
-
-        purse[this.props.currencyNameFrom] = +valFrom.toFixed(2)
-        purse[this.props.currencyNameTo]   = +valTo.toFixed(2)
-
-        dispatchSum(this.props.dispatch, '')
-        dispatchConvert(this.props.dispatch, purse)
     }
 
     render() {
@@ -176,7 +197,7 @@ class ExchangeContainer extends Component {
                 <ExchangeFrom currencyNameFrom={this.props.currencyNameFrom}
                               currencyNameTo={this.props.currencyNameTo}
                               sumInPurse={this.props.purse[this.props.currencyNameFrom]}
-                              isError={this.props.validationError}
+                              errorType={getErrorType(this.props)}
                               sumToConvert={this.props.sumToConvert}
                               onChangeAmountFrom={this.onChangeAmountFrom.bind(null, this.props.currencyNameFrom, this.props.currencyNameTo)}
                               currencies={getCurrenciesInPurse(this.props.purse)}

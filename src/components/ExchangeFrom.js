@@ -68,7 +68,7 @@ const onInputBlur = (event)=> {
 
 const getSumInPurse = (currencyName, sumInPurse)=>'You have ' + getSymbolFromCurrency(currencyName) + '' + sumInPurse
 
-const ExchangeFrom = ({dispatch, currencyNameFrom, sumInPurse, isError, onChangeAmountFrom, currencies, sumToConvert})=> {
+const ExchangeFrom = ({dispatch, currencyNameFrom, sumInPurse, errorType, onChangeAmountFrom, currencies, sumToConvert})=> {
     return (
         <Swipeable
             onSwipedLeft={()=>onSwiped(dispatch, currencies, currencyNameFrom,LEFT,'CHANGE_CURRENCY_FROM')}
@@ -100,7 +100,7 @@ const ExchangeFrom = ({dispatch, currencyNameFrom, sumInPurse, isError, onChange
                     {getSumInPurse(currencyNameFrom, sumInPurse)}
                 </div>
                 <div style={styles.errorText}>
-                    {getErrorText(isError)}
+                    {getErrorText(errorType)}
                 </div>
             </div>
         </Swipeable>

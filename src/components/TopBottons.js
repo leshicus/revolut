@@ -37,12 +37,9 @@ const styles = {
 
 // возвращает 3-й и 4-й знаки после запятой
 const getMinorDecimal = (sum)=> {
-    const floor        = Math.floor(sum)
-    const decimal      = sum - floor
-    const minorDecimal = decimal - decimal.toFixed(2, 10)
-    const minor        = minorDecimal * 10000
-
-    return '' + Math.abs(minor.toFixed(0, 10))
+    const decimal = sum % 0.01
+    const minor   = decimal * 10000
+    return minor.toFixed(0, 10)
 }
 
 const TopBottons = ({currencyNameFrom, currencyNameTo, rate, buttonExchangeDisabled, onClickExchange, onClickCancel})=> {

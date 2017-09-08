@@ -28,6 +28,10 @@ const reducer = (state = {}, action) => {
             return Object.assign({}, state, {
                 validationError: action.validationError
             })
+        case 'CONVERTATION_ERROR':
+            return Object.assign({}, state, {
+                convertationError: action.convertationError
+            })
         case 'CHANGE_SUM':
             return Object.assign({}, state, {
                 sumToConvert: action.sumToConvert

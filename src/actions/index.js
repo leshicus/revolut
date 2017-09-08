@@ -111,6 +111,11 @@ export const onSwiped = (dispatch, currencies, currencyName, direction, typeName
     })
 
     dispatch({
+        type             : 'CONVERTATION_ERROR',
+        convertationError: false
+    })
+
+    dispatch({
         type        : typeName,
         currencyName: currencyNext
     })
@@ -136,6 +141,13 @@ export const dispatchValidationError = (dispatch, error)=> {
     })
 }
 
+export const dispatchConvertationError = (dispatch, error)=> {
+    dispatch({
+        type             : 'CONVERTATION_ERROR',
+        convertationError: error
+    })
+}
+
 export const dispatchSum = (dispatch, sum)=> {
     dispatch({
         type        : 'CHANGE_SUM',
@@ -150,9 +162,11 @@ export const dispatchConvert = (dispatch, purse)=> {
     })
 }
 
-export const getErrorText = (isError)=> {
-    if (isError)
+export const getErrorText = (errorType)=> {
+    if (errorType === 1)
         return 'Not enough funds'
+    if (errorType === 2)
+        return 'Convertation failed'
     else return ''
 }
 
@@ -177,9 +191,35 @@ export const getRate = (fx, first, second, amount, accuracy)=> {
         return 0
 }
 
-export const decrementFrom= (purse, currencyNameFrom, sumToConvert)=>{
-    let valFrom        = purse[currencyNameFrom]
-    valFrom = valFrom - sumToConvert
+export const decrementSumInPurseFrom = (purse, currencyNameFrom, sumToConvert)=> {
+    let sumInPurseFrom = purse[currencyNameFrom]
+    let result         = false
 
-    return valFrom
+    if (sumInPurseFrom > 0
+        && sumToConvert > 0
+        && (sumInPurseFrom - sumToConvert > 0)
+    ) {
+        sumInPurseFrom = sumInPurseFrom - sumToConvert
+        result         = true
+    }
+
+    return {
+        sum   : +sumInPurseFrom.toFixed(2),
+        result: result
+    }
+}
+
+export const incrementSumInPurseTo = (purse, currencyNameTo, convertedSum)=> {
+    let sumInPurseTo = purse[currencyNameTo]
+    let result       = false
+
+    if (convertedSum > 0 && sumInPurseTo >= 0) {
+        sumInPurseTo += convertedSum
+        result = true
+    }
+
+    return {
+        sum   : +sumInPurseTo.toFixed(2),
+        result: result
+    }
 }
