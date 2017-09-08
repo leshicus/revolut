@@ -14,7 +14,9 @@ import {
     dispatchConvert,
     getRate,
     decrementSumInPurseFrom,
-    incrementSumInPurseTo
+    incrementSumInPurseTo,
+    isError,
+    cleanSum
 } from './../actions'
 import loading from './../assets/loading.gif'
 
@@ -47,26 +49,6 @@ const getCurrenciesInPurse = (purse)=> {
     return Object.getOwnPropertyNames(purse)
 }
 
-const isNumber = (n)=> {
-    return !isNaN(parseFloat(n)) && isFinite(n)
-}
-
-const isError = (value)=> {
-    const reg = /^[+]?((\.[0-9]+)|([0-9]+(\.[0-9]+)?))$/
-
-    if (value === '')
-        value = 0
-
-    const valueStr = parseFloat(value).toFixed(2, 10)
-
-    // console.info(value, valueStr, reg.test(valueStr), isNumber(value));
-
-    if (reg.test(valueStr) && isNumber(value))
-        return false
-    else
-        return true
-}
-
 const isButtonExchangeDisabled = (props)=> {
     return props.validationError || props.sumToConvert == 0 || props.currencyNameFrom === props.currencyNameTo
 }
@@ -97,34 +79,16 @@ class ExchangeContainer extends Component {
         event.preventDefault();
 
         let sumToConvert     = event.currentTarget.value
+        // console.info('sumToConvert',sumToConvert);
         const {purse} = this.props
         const sumInPurseFrom = purse[currencyNameFrom]
 
-// console.info(sumToConvert);
-        if (sumToConvert === '+'
-            || sumToConvert === '+.'
-            || sumToConvert === '-'
-            || sumToConvert === '-.'
-            || sumToConvert === '.'
-        ) {
-            sumToConvert = ''
-        }
-
-        sumToConvert = sumToConvert
-            .replace(/-/g, '')
-            .replace('+', '')
-            .replace('e', '')
-            .replace('E', '')
-            .replace(/^0+(?=\d)/, '')
-
-        sumToConvert = sumToConvert || ''
-
-        const error = isError(sumToConvert)
+        sumToConvert = cleanSum(sumToConvert)
+        const error  = isError(sumToConvert)
+        
         if (!error) {
             dispatchSum(this.props.dispatch, sumToConvert)
-        }
-// console.info(sumInPurseFrom, sumToConvert, sumInPurseFrom < parseFloat(sumToConvert));
-        if (isNumber(sumToConvert)) {
+
             if (sumInPurseFrom < parseFloat(sumToConvert)) {
                 dispatchValidationError(this.props.dispatch, true)
             } else {

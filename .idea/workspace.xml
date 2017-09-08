@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/index.js" afterPath="$PROJECT_DIR$/src/actions/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/tests.spec.js" afterPath="$PROJECT_DIR$/src/actions/tests.spec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ExchangeContainer.js" afterPath="$PROJECT_DIR$/src/components/ExchangeContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TopBottons.js" afterPath="$PROJECT_DIR$/src/components/TopBottons.js" />
     </list>
     <ignored path="revolut.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,34 +24,34 @@
     <favorites_list name="revolut" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.66364735">
+    <splitter split-orientation="horizontal" split-proportion="0.5736715">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ExchangeContainer.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ExchangeContainer.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/ExchangeContainer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="236">
-                  <caret line="143" column="15" selection-start-line="143" selection-start-column="15" selection-end-line="143" selection-end-column="15" />
+                <state relative-caret-position="420">
+                  <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#38#0" expanded="true" />
                     <element signature="e#86#127#0" expanded="true" />
-                    <element signature="e#477#1085#0" expanded="false" />
-                    <element signature="e#1199#1250#0" expanded="false" />
-                    <element signature="e#1278#1608#0" expanded="false" />
+                    <element signature="e#504#1112#0" expanded="false" />
                     <element signature="n#!!block;n#constructor#0;n#ExchangeContainer#0" expanded="false" />
                     <element signature="n#!!block;n#componentWillMount#0;n#ExchangeContainer#0" expanded="false" />
+                    <element signature="e#2685#2859#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="tests.spec.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="tests.spec.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/actions/tests.spec.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="588">
-                  <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+                <state relative-caret-position="1820">
+                  <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
                   <folding>
-                    <element signature="e#0#144#0" expanded="true" />
+                    <element signature="e#0#158#0" expanded="true" />
+                    <element signature="e#2550#2812#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -61,8 +60,8 @@
           <file leaf-file-name="ExchangeTo.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/ExchangeTo.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
+                <state relative-caret-position="1620">
+                  <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
@@ -77,7 +76,7 @@
           <file leaf-file-name="ExchangeFrom.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/ExchangeFrom.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-259">
+                <state relative-caret-position="60">
                   <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
                   <folding>
                     <element signature="e#262#1641#0" expanded="false" />
@@ -87,27 +86,42 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/actions/index.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="561">
-                  <caret line="206" column="23" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="23" />
+                  <caret line="221" column="41" selection-start-line="221" selection-start-column="41" selection-end-line="221" selection-end-column="41" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                     <element signature="n#!!block;n#loadFx#0" expanded="false" />
+                    <element signature="e#612#661#0" expanded="false" />
+                    <element signature="e#752#1135#0" expanded="false" />
                     <element signature="n#!!block;n#startFx#0" expanded="false" />
                     <element signature="e#1925#2127#0" expanded="false" />
-                    <element signature="e#4692#5066#0" expanded="false" />
+                    <element signature="e#2200#2641#0" expanded="false" />
+                    <element signature="e#2727#3186#0" expanded="false" />
+                    <element signature="e#3247#3348#0" expanded="false" />
+                    <element signature="e#3411#3518#0" expanded="false" />
+                    <element signature="e#3565#3652#0" expanded="false" />
+                    <element signature="e#3705#3769#0" expanded="false" />
+                    <element signature="e#3813#3956#0" expanded="false" />
+                    <element signature="e#4202#4576#0" expanded="false" />
+                    <element signature="e#4659#5105#0" expanded="false" />
+                    <element signature="e#5184#5531#0" expanded="false" />
+                    <element signature="e#5614#5919#0" expanded="false" />
+                    <element signature="e#6010#6306#0" expanded="false" />
+                    <element signature="e#6338#6374#0" expanded="false" />
+                    <element signature="e#6408#6734#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TopBottons.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TopBottons.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/TopBottons.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+                <state relative-caret-position="140">
+                  <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                     <element signature="e#170#1074#0" expanded="false" />
@@ -156,9 +170,9 @@
         <option value="$PROJECT_DIR$/src/components/ExchangeFrom.js" />
         <option value="$PROJECT_DIR$/src/constants/index.js" />
         <option value="$PROJECT_DIR$/src/components/TopBottons.js" />
-        <option value="$PROJECT_DIR$/src/components/ExchangeContainer.js" />
         <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/actions/tests.spec.js" />
+        <option value="$PROJECT_DIR$/src/components/ExchangeContainer.js" />
       </list>
     </option>
   </component>
@@ -395,12 +409,12 @@
       <updated>1503591440327</updated>
       <workItem from="1503591441756" duration="37459000" />
       <workItem from="1504087393068" duration="24607000" />
-      <workItem from="1504521927492" duration="42209000" />
+      <workItem from="1504521927492" duration="50041000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104275000" />
+    <option name="totallyTimeSpent" value="112107000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -458,11 +472,10 @@
           <folding>
             <element signature="e#0#38#0" expanded="true" />
             <element signature="e#86#127#0" expanded="true" />
-            <element signature="e#477#1085#0" expanded="false" />
-            <element signature="e#1199#1250#0" expanded="false" />
-            <element signature="e#1278#1608#0" expanded="false" />
+            <element signature="e#504#1112#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#ExchangeContainer#0" expanded="false" />
             <element signature="n#!!block;n#componentWillMount#0;n#ExchangeContainer#0" expanded="false" />
+            <element signature="e#2685#2859#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -552,11 +565,10 @@
           <folding>
             <element signature="e#0#38#0" expanded="true" />
             <element signature="e#86#127#0" expanded="true" />
-            <element signature="e#477#1085#0" expanded="false" />
-            <element signature="e#1199#1250#0" expanded="false" />
-            <element signature="e#1278#1608#0" expanded="false" />
+            <element signature="e#504#1112#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#ExchangeContainer#0" expanded="false" />
             <element signature="n#!!block;n#componentWillMount#0;n#ExchangeContainer#0" expanded="false" />
+            <element signature="e#2685#2859#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -703,17 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ExchangeFrom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-259">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding>
-            <element signature="e#262#1641#0" expanded="false" />
-            <element signature="e#1673#1733#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -722,39 +723,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ExchangeTo.js">
+    <entry file="file://$PROJECT_DIR$/src/components/ExchangeFrom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
+        <state relative-caret-position="60">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TopBottons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#170#1074#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ExchangeContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="143" column="15" selection-start-line="143" selection-start-column="15" selection-end-line="143" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#86#127#0" expanded="true" />
-            <element signature="e#477#1085#0" expanded="false" />
-            <element signature="e#1199#1250#0" expanded="false" />
-            <element signature="e#1278#1608#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#ExchangeContainer#0" expanded="false" />
-            <element signature="n#!!block;n#componentWillMount#0;n#ExchangeContainer#0" expanded="false" />
+            <element signature="e#262#1641#0" expanded="false" />
+            <element signature="e#1673#1733#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -762,23 +737,75 @@
     <entry file="file://$PROJECT_DIR$/src/actions/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
-          <caret line="206" column="23" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="23" />
+          <caret line="221" column="41" selection-start-line="221" selection-start-column="41" selection-end-line="221" selection-end-column="41" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="n#!!block;n#loadFx#0" expanded="false" />
+            <element signature="e#612#661#0" expanded="false" />
+            <element signature="e#752#1135#0" expanded="false" />
             <element signature="n#!!block;n#startFx#0" expanded="false" />
             <element signature="e#1925#2127#0" expanded="false" />
-            <element signature="e#4692#5066#0" expanded="false" />
+            <element signature="e#2200#2641#0" expanded="false" />
+            <element signature="e#2727#3186#0" expanded="false" />
+            <element signature="e#3247#3348#0" expanded="false" />
+            <element signature="e#3411#3518#0" expanded="false" />
+            <element signature="e#3565#3652#0" expanded="false" />
+            <element signature="e#3705#3769#0" expanded="false" />
+            <element signature="e#3813#3956#0" expanded="false" />
+            <element signature="e#4202#4576#0" expanded="false" />
+            <element signature="e#4659#5105#0" expanded="false" />
+            <element signature="e#5184#5531#0" expanded="false" />
+            <element signature="e#5614#5919#0" expanded="false" />
+            <element signature="e#6010#6306#0" expanded="false" />
+            <element signature="e#6338#6374#0" expanded="false" />
+            <element signature="e#6408#6734#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/tests.spec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        <state relative-caret-position="1820">
+          <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
           <folding>
-            <element signature="e#0#144#0" expanded="true" />
+            <element signature="e#0#158#0" expanded="true" />
+            <element signature="e#2550#2812#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TopBottons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#170#1074#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ExchangeTo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ExchangeContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#86#127#0" expanded="true" />
+            <element signature="e#504#1112#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#ExchangeContainer#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillMount#0;n#ExchangeContainer#0" expanded="false" />
+            <element signature="e#2685#2859#0" expanded="false" />
           </folding>
         </state>
       </provider>

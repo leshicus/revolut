@@ -121,19 +121,6 @@ export const onSwiped = (dispatch, currencies, currencyName, direction, typeName
     })
 }
 
-// export const validateEnoughFunds= (props)=>{
-//     const sumToConvert   = props.sumToConvert
-//     const {purse} = props
-//     const sumInPurseFrom = purse[props.currencyNameFrom]
-//     const convertedSum   = getRate(props.fx, props.currencyNameFrom, props.currencyNameTo, sumToConvert, 2)
-//
-//     if (sumInPurseFrom < sumToConvert) {
-//         dispatchValidationError(props.dispatch, true)
-//     } else {
-//         dispatchValidationError(props.dispatch, false)
-//     }
-// }
-
 export const dispatchValidationError = (dispatch, error)=> {
     dispatch({
         type           : 'VALIDATION_ERROR',
@@ -195,6 +182,10 @@ export const decrementSumInPurseFrom = (purse, currencyNameFrom, sumToConvert)=>
     let sumInPurseFrom = purse[currencyNameFrom]
     let result         = false
 
+    if (sumInPurseFrom === undefined) {
+        sumInPurseFrom = 0
+    }
+
     if (sumInPurseFrom > 0
         && sumToConvert > 0
         && (sumInPurseFrom - sumToConvert > 0)
@@ -213,6 +204,10 @@ export const incrementSumInPurseTo = (purse, currencyNameTo, convertedSum)=> {
     let sumInPurseTo = purse[currencyNameTo]
     let result       = false
 
+    if (sumInPurseTo === undefined) {
+        sumInPurseTo = 0
+    }
+
     if (convertedSum > 0 && sumInPurseTo >= 0) {
         sumInPurseTo += convertedSum
         result = true
@@ -224,15 +219,55 @@ export const incrementSumInPurseTo = (purse, currencyNameTo, convertedSum)=> {
     }
 }
 
-// возвращает 3-й и 4-й знаки после запятой
+// return 3-d and 4-th digits after point
 export const getMinorDecimal = (sum)=> {
     // const decimal = sum % 0.01
     // const minor   = decimal * 10000
     //
     // return minor.toFixed(0, 10)
-    const decimal = Math.abs(sum) - Math.floor(sum) // 123.12999 -> 0.12999
+    const decimal    = Math.abs(sum) - Math.floor(sum) // 123.12999 -> 0.12999
     const strDecimal = decimal + ''
-    const minorPart = strDecimal.substring(4,6) 
+    const minorPart  = strDecimal.substring(4, 6)
 
     return minorPart
+}
+
+// * correct values: 0., 0.1, 0.12, 123., 123.1, 123.12
+export const isError = (value)=> {
+    const reg = /^(([0-9]+(\.[0-9]{1,2})?)|([0-9]+(\.)?))$/
+
+    if (value === '')
+        value = 0
+
+    // const valueStr = parseFloat(value).toFixed(2, 10)
+    const valueStr = value + ''
+
+    if (reg.test(valueStr) && isNumber(value)) {
+        return false
+    } else
+        return true
+}
+
+export const isNumber = (n)=> {
+    return !isNaN(parseFloat(n))
+}
+
+export const cleanSum = (sum)=> {
+    if (sum === '+'
+        || sum === '+.'
+        || sum === '-'
+        || sum === '-.'
+        || sum === '.'
+    ) {
+        sum = ''
+    }
+
+    sum = sum
+        .replace(/-/g, '')
+        .replace(/\+/g, '')
+        .replace('e', '')
+        .replace('E', '')
+        .replace(/^0+(?=\d)/, '')
+
+    return sum || ''
 }
