@@ -66,26 +66,26 @@ class ExchangeContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.onChangeAmountFrom = this.onChangeAmountFrom.bind(this)
-        this.onClickExchange    = this.onClickExchange.bind(this)
-        this.onClickCancel      = this.onClickCancel.bind(this)
+        // this.onChangeAmountFrom = this.onChangeAmountFrom.bind(this)
+        // this.onClickExchange    = this.onClickExchange.bind(this)
+        // this.onClickCancel      = this.onClickCancel.bind(this)
     }
 
     componentWillMount() {
         startFx(this.props.dispatch, this.props.intervalLoadFx)
     }
 
-    onChangeAmountFrom = (currencyNameFrom, currencyNameTo, event) => {
+    onChangeAmountFrom = (event) => {
         event.preventDefault();
 
         let sumToConvert     = event.currentTarget.value
         // console.info('sumToConvert',sumToConvert);
         const {purse} = this.props
-        const sumInPurseFrom = purse[currencyNameFrom]
+        const sumInPurseFrom = purse[this.props.currencyNameFrom]
 
         sumToConvert = cleanSum(sumToConvert)
         const error  = isError(sumToConvert)
-        
+
         if (!error) {
             dispatchSum(this.props.dispatch, sumToConvert)
 
@@ -143,7 +143,7 @@ class ExchangeContainer extends Component {
                               sumInPurse={this.props.purse[this.props.currencyNameFrom]}
                               errorType={getErrorType(this.props)}
                               sumToConvert={this.props.sumToConvert}
-                              onChangeAmountFrom={this.onChangeAmountFrom.bind(null, this.props.currencyNameFrom, this.props.currencyNameTo)}
+                              onChangeAmountFrom={(e)=>this.onChangeAmountFrom(e)}
                               currencies={getCurrenciesInPurse(this.props.purse)}
                               dispatch={this.props.dispatch}
                 />
